@@ -6,6 +6,9 @@ use App\Models\Product;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
+use App\Exports\ProductsExport;
+use App\Imports\ProductsImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ManageProduct extends Component
 {
@@ -13,22 +16,26 @@ class ManageProduct extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    public $excelFile, $disabled = true;
+    public $excelFile;
 
     protected $rules = [
-        'excelFile' => 'required|file|in:xlxs,xls',
+        'excelFile' => 'required|file|mimes:xlsx, xls',
     ];
 
     public function updated($fields)
     {
         $this->validateOnly($fields);
-        $this->disabled = false;
     }
 
     public function import()
     {
+        $this->validate();
+        Excel::import(new ProductsImport, $this->excelFile);
+    }
 
-        dd($this->excelFile);
+    public function exportToExcel()
+    {
+        return Excel::download(new ProductsExport, 'products.xlsx');
     }
 
     public function render()
