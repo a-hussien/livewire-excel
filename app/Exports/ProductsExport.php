@@ -11,6 +11,7 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
 class ProductsExport implements FromCollection, WithHeadings, ShouldAutoSize, WithStyles
 {
+
     /**
     * @return \Illuminate\Support\Collection
     */
@@ -56,7 +57,7 @@ class ProductsExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
                 ],
             ],
         ];
-        
+
         $sheet->getStyle('A1:F1')->applyFromArray($styleArray);
 
     }

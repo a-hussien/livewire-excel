@@ -14,8 +14,11 @@
             <button type="button" class="btn btn-info btn-sm text-white" data-bs-toggle="modal" data-bs-target="#importModal">
                 Import
             </button>
-            <button type="button" class="btn btn-success btn-sm text-white" wire:click="exportToExcel">
+            <button type="button" class="btn btn-success btn-sm text-white" wire:click="export('xlsx')">
                 Export
+            </button>
+            <button type="button" class="btn btn-danger btn-sm text-white" wire:click="export('pdf')">
+                PDF
             </button>
         </div>
     </div>
@@ -66,7 +69,7 @@
                                 </div>
                             @enderror
                         </div>
-                        
+
                         <div class="mb-1">
                             <a href="{{route('template')}}" class="btn btn-dark btn-sm">Example Template</a>
                         </div>

@@ -33,10 +33,15 @@ class ManageProduct extends Component
         Excel::import(new ProductsImport, $this->excelFile);
     }
 
-    public function exportToExcel()
+    public function export($ext)
     {
-        return Excel::download(new ProductsExport, 'products.xlsx');
+        return Excel::download(new ProductsExport, "products.$ext");
     }
+
+    // public function exportToPdf()
+    // {
+    //     return Excel::download(new ProductsExport, 'products.pdf');
+    // }
 
     public function render()
     {
