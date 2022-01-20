@@ -3,33 +3,42 @@
 namespace App\Imports;
 
 use App\Models\Product;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Validator;
-use Maatwebsite\Excel\Concerns\ToCollection;
+use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\Importable;
+use Maatwebsite\Excel\Concerns\SkipsErrors;
+use Maatwebsite\Excel\Concerns\WithUpserts;
+use Maatwebsite\Excel\Concerns\SkipsOnError;
 use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithUpsertColumns;
 
-class ProductsImport implements ToCollection, SkipsEmptyRows, WithHeadingRow
+class ProductsImport implements ToModel, SkipsEmptyRows, SkipsOnError, WithHeadingRow, WithUpserts, WithUpsertColumns
 {
-   
-    public function collection(Collection $rows)
-    {
-        $validated = Validator::make($rows->toArray(), [
-                        'name'  => 'unique:products,name',
-                    ])->validate();
-
-        foreach ($rows as $row) 
-        {
-            Product::updateOrCreate([
-                'name'     => $row['name'],
-                'brand'    => $row['brand'], 
-                'price'    => $row['price'],
-                'created_at'    => $row['created_at'],
-                'updated_at'    => $row['updated_at'],
-            ]);
-        }
+    use Importable, SkipsErrors;
     
-        
+    /**
+    * @return string|array
+    */
+    public function uniqueBy()
+    {
+        return 'name';
+    }
+
+    /**
+    * @return array
+    */
+    public function upsertColumns()
+    {
+        return ['brand', 'price'];
+    }
+
+    public function model(array $row)
+    {
+        return new Product([
+            'name'     => $row['name'],
+            'brand'    => $row['brand'], 
+            'price'    => $row['price'],
+        ]);
     }
 
 }

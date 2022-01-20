@@ -27,6 +27,7 @@
                   <th scope="col">Product</th>
                   <th scope="col">Brand</th>
                   <th scope="col">Price</th>
+                  <th scope="col">Last Update</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,6 +37,7 @@
                     <td>{{$product->name}}</td>
                     <td>{{$product->brand}}</td>
                     <td>{{$product->price}}<small class="float-end"> LE</span></td>
+                    <td>{{$product->updated_at}}</td>
                 </tr>
                 @endforeach
             </tbody>
@@ -85,7 +87,6 @@
                 </div>
             </form>
         </div>
-        
     </div>
 
 </div>
