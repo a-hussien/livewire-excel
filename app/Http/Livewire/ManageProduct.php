@@ -38,11 +38,6 @@ class ManageProduct extends Component
         return Excel::download(new ProductsExport, "products.$ext");
     }
 
-    // public function exportToPdf()
-    // {
-    //     return Excel::download(new ProductsExport, 'products.pdf');
-    // }
-
     public function render()
     {
         $products = Product::paginate(5);
