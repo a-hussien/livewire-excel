@@ -21,7 +21,7 @@ class ProductsImport implements ToModel, SkipsEmptyRows, SkipsOnError, WithHeadi
     */
     public function uniqueBy()
     {
-        return 'name';
+        return 'model';
     }
 
     /**
@@ -29,15 +29,17 @@ class ProductsImport implements ToModel, SkipsEmptyRows, SkipsOnError, WithHeadi
     */
     public function upsertColumns()
     {
-        return ['brand', 'price'];
+        return ['category', 'minimum_price', 'unit_price', 'bulk_price'];
     }
 
     public function model(array $row)
     {
         return new Product([
-            'name'     => $row['name'],
-            'brand'    => $row['brand'], 
-            'price'    => $row['price'],
+            'model'     => $row['model'],
+            'category'    => $row['category'], 
+            'minimum_price'    => $row['minimum_price'],
+            'unit_price'    => $row['unit_price'],
+            'bulk_price'    => $row['bulk_price'],
         ]);
     }
 

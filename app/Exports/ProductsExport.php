@@ -24,9 +24,11 @@ class ProductsExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
     {
         return [
             '#',
-            'Name',
-            'Brand',
-            'Price',
+            'Model',
+            'Category',
+            'Minimum Price',
+            'Unit Price',
+            'Bulk Price',
             'Created_at',
             'Updated_at'
         ];
@@ -44,21 +46,21 @@ class ProductsExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
             'font' => [
                 'bold' => true,
                 'size' => 14,
-                'color'=> ['rgb' => 'FFFFFF']
+                'color'=> ['rgb' => '000000']
             ],
             'fill' => [
                 'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_GRADIENT_LINEAR,
-                'rotation' => 90,
+                'rotation' => 3,
                 'startColor' => [
-                    'argb' => '038aff',
+                    'argb' => '01B9B9',
                 ],
                 'endColor' => [
-                    'argb' => '0b7fab',
+                    'argb' => '1A79A0',
                 ],
             ],
         ];
 
-        $sheet->getStyle('A1:F1')->applyFromArray($styleArray);
+        $sheet->getStyle('A1:H1')->applyFromArray($styleArray);
 
     }
 }
