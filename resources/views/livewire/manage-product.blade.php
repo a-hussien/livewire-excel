@@ -24,22 +24,29 @@
     </div>
     <div class="table-responsive-sm">
         <table class="table table-bordered table-striped table-hover">
-            <thead class="table-success">
+            <thead class="table-success text-center">
+                <tr class="text-wrap">
+                  <th rowspan="2" class="py-4"> {{__('#')}} </th>
+                  <th rowspan="2" class="py-4">Model Name</th>
+                  <th rowspan="2" class="py-4">Category</th>
+                  <th colspan="3">Price</th>
+                  <th rowspan="2" class="py-4">Last Update</th>
+                </tr>
                 <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Product</th>
-                  <th scope="col">Brand</th>
-                  <th scope="col">Price</th>
-                  <th scope="col">Last Update</th>
+                  <th scope="col">Minimum Price</th>
+                  <th scope="col">Unit Price</th>
+                  <th scope="col">Bulk Price</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($products as $product)
                 <tr>
                     <th scope="row">{{$loop->iteration}}</th>
-                    <td>{{$product->name}}</td>
-                    <td>{{$product->brand}}</td>
-                    <td>{{$product->price}}<small class="float-end"> LE</span></td>
+                    <td>{{$product->model}}</td>
+                    <td>{{$product->category}}</td>
+                    <td>{{$product->minimum_price}}<small class="float-end"> LE</span></td>
+                    <td>{{$product->unit_price}}<small class="float-end"> LE</span></td>
+                    <td>{{$product->bulk_price}}<small class="float-end"> LE</span></td>
                     <td>{{$product->updated_at}}</td>
                 </tr>
                 @endforeach
