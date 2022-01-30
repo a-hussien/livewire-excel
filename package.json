@@ -19,5 +19,8 @@
         "resolve-url-loader": "^4.0.0",
         "sass": "^1.48.0",
         "sass-loader": "^12.1.0"
+    },
+    "dependencies": {
+        "cypress": "^9.3.1"
     }
 }
