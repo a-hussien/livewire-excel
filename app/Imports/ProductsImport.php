@@ -29,13 +29,14 @@ class ProductsImport implements ToModel, SkipsEmptyRows, SkipsOnError, WithHeadi
     */
     public function upsertColumns()
     {
-        return ['category', 'minimum_price', 'unit_price', 'bulk_price'];
+        return ['category', 'type', 'minimum_price', 'unit_price', 'bulk_price'];
     }
 
     public function model(array $row)
     {
         return new Product([
             'model'     => $row['model'],
+            'type'     => $row['type'],
             'category'    => $row['category'], 
             'minimum_price'    => $row['minimum_price'],
             'unit_price'    => $row['unit_price'],

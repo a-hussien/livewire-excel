@@ -24,7 +24,7 @@
     </div>
     <div class="table-responsive-sm">
         <table class="table table-bordered table-striped table-hover">
-            <thead class="table-success text-center">
+            <thead class="text-center text-white bg-secondary">
                 <tr class="text-wrap">
                   <th rowspan="2" class="py-4"> {{__('#')}} </th>
                   <th rowspan="2" class="py-4">Model Name</th>
@@ -52,7 +52,7 @@
                 @endforeach
             </tbody>
         </table>
-        <div class="position-absolute bottom-0 start-50 translate-middle">
+        <div class="d-flex justify-content-center p-3">
             {{ $products->links() }}
         </div>
     </div>
