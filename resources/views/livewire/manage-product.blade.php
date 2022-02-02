@@ -42,7 +42,7 @@
                 @foreach ($products as $product)
                 <tr>
                     <th scope="row">{{$loop->iteration}}</th>
-                    <td>{{$product->model}}</td>
+                    <td>{{$product->model}} <span class="float-end">{{$product->type_name}}</span></td>
                     <td>{{$product->category}}</td>
                     <td>{{$product->minimum_price}}<small class="float-end"> LE</span></td>
                     <td>{{$product->unit_price}}<small class="float-end"> LE</span></td>

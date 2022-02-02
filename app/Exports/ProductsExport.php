@@ -25,6 +25,7 @@ class ProductsExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
         return [
             '#',
             'Model',
+            'Type',
             'Category',
             'Minimum Price',
             'Unit Price',
@@ -49,18 +50,14 @@ class ProductsExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
                 'color'=> ['rgb' => '000000']
             ],
             'fill' => [
-                'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_GRADIENT_LINEAR,
-                'rotation' => 3,
-                'startColor' => [
-                    'argb' => '01B9B9',
-                ],
-                'endColor' => [
-                    'argb' => '1A79A0',
-                ],
+                'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+                'Color' => [
+                    'argb' => '555555',
+                ]
             ],
         ];
 
-        $sheet->getStyle('A1:H1')->applyFromArray($styleArray);
+        $sheet->getStyle('A1:I1')->applyFromArray($styleArray);
 
     }
 }

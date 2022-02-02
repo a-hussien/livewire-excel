@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProductFactory extends Factory
@@ -15,6 +16,7 @@ class ProductFactory extends Factory
     {
         return [
             'model' => $this->faker->name(),
+            'type' => Arr::random(['plastic', 'metal']),
             'category' => $this->faker->company(),
             'minimum_price' => $this->faker->randomFloat(2, 1000, 5000),
             'unit_price' => $this->faker->randomFloat(2, 500, 3000),

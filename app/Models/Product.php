@@ -12,6 +12,11 @@ class Product extends Model
 
     protected $guarded = [];
 
+    public function getTypeNameAttribute()
+    {
+        return ucfirst($this->type);
+    }
+
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('d-m-Y H:i a');
